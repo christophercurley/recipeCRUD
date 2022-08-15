@@ -3,8 +3,8 @@ import React from "react";
 const RowConstruct = ({ recipes, handleDelete }) => {
   return (
     <React.Fragment>
-      {recipes.map((recipe) => (
-        <tr key={recipe.name}>
+      {recipes.map((recipe, index) => (
+        <tr key={index}>
           <td>{recipe.name}</td>
           <td>{recipe.cuisine}</td>
           <td>
@@ -28,3 +28,6 @@ const RowConstruct = ({ recipes, handleDelete }) => {
 };
 
 export default RowConstruct;
+/***
+
+*/
