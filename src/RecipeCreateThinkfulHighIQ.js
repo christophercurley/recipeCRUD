@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function RecipeCreate({ setRecipes }) {
+function RecipeCreate({ recipes }) {
   // TODO: When the form is submitted, a new recipe should be created, and the form contents cleared.
   // TODO: Add the required input and textarea form elements.
   // TODO: Add the required submit and change handlers
@@ -11,7 +11,8 @@ function RecipeCreate({ setRecipes }) {
     ingredients: "",
     preparation: "",
   };
-  const [formData, setFormData] = useState(formInit);
+  const [formData, setFormData] = useState({ ...formInit });
+
   const handleChange = ({ target }) => {
     setFormData({
       ...formData,
@@ -21,8 +22,8 @@ function RecipeCreate({ setRecipes }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setRecipes((recipes) => [...recipes, formData]);
-    setFormData(formInit);
+    recipes(formData);
+    setFormData({ ...recipes });
   };
 
   return (
@@ -36,6 +37,7 @@ function RecipeCreate({ setRecipes }) {
                 type="text"
                 id="name"
                 placeholder="Name"
+                required={true}
                 value={formData.name}
                 onChange={handleChange}
               />
@@ -46,6 +48,7 @@ function RecipeCreate({ setRecipes }) {
                 type="text"
                 id="cuisine"
                 placeholder="Cuisine"
+                required={true}
                 value={formData.cuisine}
                 onChange={handleChange}
               />
@@ -56,6 +59,7 @@ function RecipeCreate({ setRecipes }) {
                 type="url"
                 id="photo"
                 placeholder="Photo"
+                required={true}
                 value={formData.photo}
                 onChange={handleChange}
               />
@@ -66,6 +70,7 @@ function RecipeCreate({ setRecipes }) {
                 type="text"
                 id="ingredients"
                 placeholder="Ingredients"
+                required={true}
                 value={formData.ingredients}
                 onChange={handleChange}
               ></textarea>
@@ -76,6 +81,7 @@ function RecipeCreate({ setRecipes }) {
                 type="text"
                 id="preparation"
                 placeholder="Preparation"
+                required={true}
                 value={formData.preparation}
                 onChange={handleChange}
               ></textarea>
